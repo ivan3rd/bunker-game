@@ -8,7 +8,10 @@ const port = 4000
 
 io.on('connection',socket=>{
 
-    
+    socket.on('message', (text)=>{
+
+        io.emit('message', text)
+    })
 
     //this block is for futer players connection monitoring
     console.log(socket.id+' has been connected')

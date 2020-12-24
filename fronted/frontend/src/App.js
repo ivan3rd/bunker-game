@@ -26,7 +26,7 @@ function App() {
     <div className="App">
       <OpponentsWrapper />
       <div id="playerInterface">
-        <ChatWrapper/>
+        <ChatWrapper socket={socket} />
         <PlayerStatsWrapper/>
       </div>
       
