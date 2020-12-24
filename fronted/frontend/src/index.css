@@ -59,7 +59,7 @@ code {
 }
 #playerInterface > *{
   display:inline-block;
-  }
+}
 
 .CharacterSheet{
   height:100px;
