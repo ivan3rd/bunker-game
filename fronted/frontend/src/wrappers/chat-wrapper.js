@@ -44,7 +44,7 @@ export function ChatWrapper(props){
     }
 
     useEffect(()=>{
-        props.socket.on('message',(text)=>{
+        props.socket.on('messageToAll',(text)=>{
             setChatLog([...chatLog,text])
         })
         console.log('HEY! Something rendered')

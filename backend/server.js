@@ -10,7 +10,7 @@ io.on('connection',socket=>{
 
     socket.on('message', (text)=>{
 
-        io.emit('message', text)
+        io.emit('messageToAll', text)
     })
 
     //this block is for futer players connection monitoring
