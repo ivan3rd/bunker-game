@@ -57,8 +57,13 @@ code {
 #playerInterface *{
 
 }
+
 #playerInterface > *{
   display:inline-block;
+}
+
+#ChatWrapper{
+  height:300px;
 }
 
 .CharacterSheet{

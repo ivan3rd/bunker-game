@@ -1,10 +1,15 @@
 export function ChatWrapper(){
     return(
         <div id="ChatWrapper">
-            <div id='chatLog'>This is chat log</div>
+            <div id='chatLog'>This is chat log
+                <ul>
+                    
+                </ul>
+            </div>
+
             <form id='chatForm'>
-                <input id="chatInput"autocomplete="off" title="chat"></input>
-                <button id='chatSay'>Say</button>
+                <input type='text' id="chatInput"autocomplete="off" title="chat"></input>
+                <input type='submit' value="Submit" />
             </form>
         </div>
            

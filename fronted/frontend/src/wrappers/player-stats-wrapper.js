@@ -6,7 +6,7 @@ export function PlayerStatsWrapper(){
     
     return(
         <div className='PlayerStatsWrapper'>
-            <h3>Ваш персонаж</h3>
+            <p>Ваш персонаж</p>
             <CharacterSheet {...player} ></CharacterSheet>
         </div>
     )
