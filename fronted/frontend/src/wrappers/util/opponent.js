@@ -12,12 +12,11 @@ function Profile(props){
 
 
 export function Opponent(props){
-    //console.log(props)
     return(
         <div className='OpponentInfoWrapper'>
             
             <Profile name={props.name}></Profile>
-            <CharacterSheet {...props}></CharacterSheet>
+            <CharacterSheet {...props.charsheet}></CharacterSheet>
         </div>
         
     )
