@@ -1,13 +1,20 @@
 import CharacterSheet from './util/character-sheet'
+import {useEffect, useState} from 'react'
 
-export function PlayerStatsWrapper(){
-    const testCharacters = require("./util/test-character.json");
-    const player = testCharacters.ivan
-    
+export function PlayerStatsWrapper(props){
+    const [playerCharsheet, setPlayerCharsheet] = useState([])
+
+    useEffect(()=>{
+        props.socket.on('providingCharsheet',(charSheet)=>{
+            console.log(charSheet);
+            setPlayerCharsheet(charSheet);          
+          })
+    })
+
     return(
         <div className='PlayerStatsWrapper'>
             <p>Ваш персонаж</p>
-            <CharacterSheet {...player} ></CharacterSheet>
+            <CharacterSheet {...playerCharsheet} ></CharacterSheet>
         </div>
     )
 }

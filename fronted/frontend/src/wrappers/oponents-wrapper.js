@@ -3,7 +3,8 @@ import {Opponent} from './util/opponent'
 export function OpponentsWrapper(props){
 
     const testCharacters = require("./util/test-character.json");
-    console.log(testCharacters)
+    
+    
 
     // function printOutOpponents()
     // {   
