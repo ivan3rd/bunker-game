@@ -1,16 +1,27 @@
 import {RegestrationPanel} from './wrappers/util/reg-panel'
 import Game from './Game'
+import {createContext} from 'react';
 
-let login = sessionStorage.getItem('login');
-let playerID=sessionStorage.getItem('playerID');
+const storage = sessionStorage
+
+
+let login = storage.getItem('login');
+let playerID=storage.getItem('playerID');
 
 function App(){
+    const storageContext = createContext(storage)
     //here is supposed mechanism for checking a registration
 
     if(!login||!playerID){
-        return <RegestrationPanel/>
-    }   
+        return <storageContext.Provider>
+                <RegestrationPanel/>
+            </storageContext.Provider>      
+        }   
     else return <Game/>
+    
+
+
+
 }
 
-export default App;
+export default App

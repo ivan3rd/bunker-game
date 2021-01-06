@@ -1,9 +1,10 @@
 import './reg-panel.css'
-import {useState} from 'react'
+import {useState, useContext} from 'react'
 
 export function RegestrationPanel(){
-
     const [login, setLogin] = useState('')
+    //const storage = useContext(storageContext)
+
 
     const handleReg=(event)=>{
         event.preventDefault();
@@ -11,6 +12,7 @@ export function RegestrationPanel(){
         sessionStorage.setItem('playerID', Math.floor(Math.random()*(9000-1000)))
         alert('login is '+sessionStorage.getItem('login')+'\nand your playerID is '+sessionStorage.getItem('playerID'));
         setLogin('');
+        window.location.reload();
     }
 
     return(
