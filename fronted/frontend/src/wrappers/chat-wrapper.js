@@ -6,9 +6,7 @@ export function ChatWrapper(props){
 
     const handleSubmit=(event)=>{
         event.preventDefault();
-        //alert("message is "+playerMsg)
         props.socket.emit('message', playerMsg)
-        //setChat([...chat, event.message])
         setPlayerMsg('');
     }
 

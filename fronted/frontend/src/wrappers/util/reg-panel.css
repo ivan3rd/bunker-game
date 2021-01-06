@@ -1,0 +1,33 @@
+.regestrationPanel{
+    display:block;
+    align-self:center;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+
+    width: 100%; 
+    height: 100%;
+    background-color: rgba(0,0,0, 0.4);
+}
+.registrationForm{
+    position:absolute;
+    background-color: #fff;
+    text-align:center;
+    padding-top: 5%;
+    top:25%;
+    left:25%;
+    width: 50%;
+    height: 50%;
+    border-radius: 7px;
+    
+}
+.registrationForm>*{
+    width:90%;
+    border-radius:7px;
+    font-size:20px;
+    font-style:oblique;
+    align-self:center;
+    vertical-align: middle;
+}
+
+

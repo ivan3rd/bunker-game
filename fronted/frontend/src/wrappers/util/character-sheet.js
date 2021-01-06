@@ -1,3 +1,4 @@
+
 export default function CharacterSheet(props){
 
     if(props[0]===undefined)
@@ -5,7 +6,7 @@ export default function CharacterSheet(props){
 
     const renderList=()=>{
         return (
-                <ul>
+                <ul >
                     <li className="gender" id={props[0][0]}>пол: {props[1][0]}</li>
                     <li className="age" id={props[0][0]}>возвраст: {props[2][0]}</li>
                     <li className="job" id={props[0][0]}>Профессия: {props[3][0]}</li>
@@ -22,8 +23,9 @@ export default function CharacterSheet(props){
     }
     
     return (
-        <div className='CharacterSheet'>
-        {renderList()}
-        </div>
+
+    <div className='CharacterSheet'>
+    {renderList()}
+    </div>
     )
 }

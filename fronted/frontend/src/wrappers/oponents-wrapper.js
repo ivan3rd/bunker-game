@@ -12,7 +12,6 @@ export function OpponentsWrapper(props){
             
         // })
     })
-    console.log(props)
     if(props.opponents.length == 0)
         return(
             <div id='opponentsWrapper'>
