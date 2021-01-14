@@ -5,14 +5,14 @@ import {createContext} from 'react';
 const storage = sessionStorage
 
 
-let login = storage.getItem('login');
+let playerName = storage.getItem('playerName');
 let playerID=storage.getItem('playerID');
 
 function App(){
     const storageContext = createContext(storage)
     //here is supposed mechanism for checking a registration
 
-    if(!login||!playerID){
+    if(!playerName||!playerID){
         return <storageContext.Provider>
                 <RegestrationPanel/>
             </storageContext.Provider>      

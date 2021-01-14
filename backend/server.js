@@ -1,4 +1,6 @@
 const app= require('express')()
+const cors = require('cors');
+const bodyParser = require('body-parser');
 const httpserver = require('http').createServer(app)
 const io = require('socket.io')(httpserver,{
     transports: ["websocket", "polling"]
@@ -9,7 +11,6 @@ const testCharacters = require('./test-character.json')
 const Character = require('./player')
 
 const port = 4000
-
 
 
 let playersInTheRoom= new Map();
@@ -23,9 +24,13 @@ function provideCharacters(){
     io.emit('providingCharacters',playersList)
 }
 
+function registration(){
+    
+}
+
 function provideCharsheet(id='defaultID'){
     let charsheet= testCharacters.player;
-    return new Character(id, charsheet)    
+    return new Character(id, 'player',charsheet)    
 }
 
 io.on('connection',socket=>{
@@ -68,8 +73,19 @@ io.on('connection',socket=>{
 
 })
 
-const registration= require('./registration')
-//httpserver.use('/registration',registration)
+
+app.use(cors())
+app.use(bodyParser.json())
+
+
+app.post('/register',(req,res)=>{
+    console.log('request recieved ')
+    console.log(req.body)
+
+    let playerName = req.body.name;
+    let playerID = Math.floor(Math.random()*(9000-1000))
+    res.send({playerName: playerName,playerID: playerID})
+})
 
 httpserver.listen(port,()=>{
     console.log('lisening on port '+port)

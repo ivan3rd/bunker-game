@@ -1,7 +1,7 @@
 class player{
-    constructor(socketID,charsheet){
+    constructor(socketID, playerName,charsheet){
         this.socketID=socketID;
-        this.name='player'+Math.random();
+        this.name=playerName;
         this.charsheet=this.addingCharsheet(charsheet)
     }
 
