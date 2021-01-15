@@ -40,7 +40,7 @@ export function RegestrationPanel(){
             console.log(err)
         })
         setLogin('');
-        window.location.reload();
+        window.location.assign(window.location+'game');
        
     }
 

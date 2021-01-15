@@ -5,9 +5,6 @@ import {PlayerStatsWrapper} from './wrappers/player-stats-wrapper';
 import io from 'socket.io-client';
 import { useEffect,useState } from 'react';
 
-// const socket = io.connect('http://localhost:4000',{
-//   transports: ["websocket", "polling"]
-// })
 
 let socket;
 function Game() {
@@ -18,14 +15,17 @@ function Game() {
    useEffect(async()=>{
     console.log('opening socket')
     socket = io.connect('http://localhost:4000',{
+      query:{
+        "playerName":sessionStorage.getItem('playerName')
+      },
       transports: ["websocket", "polling"]
     })
 
   },[])
-
+//socket.emit('playerName',sessionStorage.getItem('playerName'))
   useEffect(()=>{
-    socket.on('connect',(message)=>
-    console.log('your socket ID is '+socket.id))
+    socket.on('connect',(message)=>{
+    })
 
 
     socket.on('providingCharacters',characters=>{

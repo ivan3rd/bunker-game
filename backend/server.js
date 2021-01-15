@@ -24,30 +24,39 @@ function provideCharacters(){
     io.emit('providingCharacters',playersList)
 }
 
-function registration(){
-    
+
+function provideCharsheet(id='defaultID', name='defaultName'){
+    let charsheet= testCharacters.player;
+    return new Character(id, name,charsheet)    
 }
 
-function provideCharsheet(id='defaultID'){
-    let charsheet= testCharacters.player;
-    return new Character(id, 'player',charsheet)    
-}
+io.use((socket,next)=>{
+    socket.playerName=socket.handshake.query.playerName;
+    
+    next();
+})
+
+io.use((socket,next)=>{
+        //adding character to new room
+    socket.join('playroom')
+        //giving player a character
+    socket.Character= provideCharsheet(socket.id, socket.playerName);
+        //Adding new player to the array of all players
+    playersInTheRoom.set(socket.id,socket.Character) 
+
+    //it might be neccecary for future, becase even though you could iterate each player by room "playroom", there has to be some mechanism to keep list of player characters in memeory, in order if someone will disconnect and reconnect, but the game could run whithout disconnected player interaction
+
+
+    next();
+})
 
 io.on('connection',socket=>{
-    console.log(socket.id+' has been connected')
+    // socket.on('playerName',(name)=>{
+    //     socket.playerName=name
+    // }) 
+    console.log(socket.playerName+' has been connected')
 
-    //this block is for all operations that suposed to happen whenever new player connects
-    
-
-    //adding character to new room
-    socket.join('playroom')
-
-    //giving player a character
-    socket.Character= provideCharsheet(socket.id);
-
-    //Adding new player to the array of all players
-    //it might be neccecary for future, becase even though you could iterate each player by room "playroom", there has to be some mechanism to keep list of player characters in memeory, in order if someone will disconnect and reconnect, but the game could run whithout disconnected player interaction
-    playersInTheRoom.set(socket.id,socket.Character) 
+    //this block is for all operations that suposed to happen whenever a player connects
 
     //printing out all characters
     provideCharacters();
@@ -79,8 +88,6 @@ app.use(bodyParser.json())
 
 
 app.post('/register',(req,res)=>{
-    console.log('request recieved ')
-    console.log(req.body)
 
     let playerName = req.body.name;
     let playerID = Math.floor(Math.random()*(9000-1000))
